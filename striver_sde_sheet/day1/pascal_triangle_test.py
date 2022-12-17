@@ -3,7 +3,7 @@
 import unittest
 from pascal_triangle import pascal_triangle
 
-class MatrixZeroesTest(unittest.TestCase):
+class PascalTriangleTest(unittest.TestCase):
     """ Test class. """
     def test_1(self):
         """ Testcase 1. """
