@@ -1,4 +1,4 @@
-""" Problem : Next Permutation
+""" Problem : Kadane Algorithm
 Problem Id: Day 1, Problem 4
 Onine Problem Link : https://leetcode.com/problems/maximum-subarray/
 
