@@ -7,6 +7,9 @@ Solution:
     2. For each number num in the list
        a) check of the num bit in x is set to 1. If yes, we have found the duplicate number
        b) Else: Set the num bit in x to 1
+
+Seven approaches to solve the problem:
+https://leetcode.com/problems/find-the-duplicate-number/solutions/127594/find-the-duplicate-number/
 """
 
 def find_duplicate(nums):
