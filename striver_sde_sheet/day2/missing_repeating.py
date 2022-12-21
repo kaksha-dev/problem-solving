@@ -1,5 +1,5 @@
 """ Problem : Missing and repeating numbers
-Problem Id: Day 2, Problem 4
+Problem Id: Day 2, Problem 5
 Onine Problem Link : https://www.interviewbit.com/problems/repeat-and-missing-number-array.
 
 Solution Approach:
