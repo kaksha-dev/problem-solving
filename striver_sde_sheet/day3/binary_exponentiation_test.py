@@ -3,7 +3,7 @@
 import unittest
 from binary_exponentiation import myPow
 
-class SearchMatrixTest(unittest.TestCase):
+class BinaryExponentiationTest(unittest.TestCase):
     """ Test class. """
     def test_1(self):
         """ Testcase 1. """
