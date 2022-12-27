@@ -3,7 +3,7 @@
 import unittest
 from grid_unique_paths import unique_paths
 
-class MajorityElementTest(unittest.TestCase):
+class UniquePathsTest(unittest.TestCase):
     """ Test class. """
     def test_1(self):
         """ Testcase 1. """

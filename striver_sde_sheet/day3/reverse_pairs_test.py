@@ -3,7 +3,7 @@
 import unittest
 from reverse_pairs import reverse_pairs
 
-class RotateMatrixTest(unittest.TestCase):
+class ReversePairsTest(unittest.TestCase):
     """ Test class. """
     def test_1(self):
         """ Testcase 1. """
