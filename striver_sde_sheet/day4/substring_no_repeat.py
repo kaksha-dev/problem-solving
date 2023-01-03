@@ -16,19 +16,15 @@ def longest_substring_no_repeat(s):
     Arguments:
     s -- input string
     """
-    longest_cnt = 0
-    current_cnt = 0
-    char_index_map = defaultdict(int)
+    left = right = 0
+    longest_count = 0
+    d = defaultdict(int)
 
-    for i, c in enumerate(s):
-        if c not in char_index_map:
-            current_cnt += 1
-            char_index_map[c] = i
-            longest_cnt = max(longest_cnt, current_cnt)
-        else:
-            prev = char_index_map[c]
-            longest_cnt = max(longest_cnt, i-prev)
-            char_index_map = {key:val for key, val in char_index_map.items() if val >=prev}
-            char_index_map[c] = i
-            current_cnt = i-prev
-    return longest_cnt
+    while right < len(s):
+        if s[right] in d and left <= d[s[right]] < right:
+            left = d[s[right]]+1
+        longest_count = max(longest_count, right-left+1)
+        d[s[right]] = right
+        right += 1
+
+    return longest_count

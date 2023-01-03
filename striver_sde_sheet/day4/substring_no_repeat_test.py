@@ -25,6 +25,13 @@ class LongestSubstringNoRepeatTest(unittest.TestCase):
             longest_substring_no_repeat(
                 "pwwkew"),
                 3)
+    
+    def test_4(self):
+        """ Testcase 4. """
+        self.assertEqual(
+            longest_substring_no_repeat(
+                "abba"),
+                2)
 
 
 if __name__ == '__main__':
