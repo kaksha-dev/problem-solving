@@ -1,8 +1,16 @@
-""" Problem : Reverse Linked List
-Problem Id: Day 5, Problem 1
-Onine Problem Link : https://leetcode.com/problems/two-sum/.
+""" Problem : Merge Two Sorted Lists
+Problem Id: Day 5, Problem 3
+Onine Problem Link : https://leetcode.com/problems/merge-two-sorted-lists.
 
 """
+
+class ListNode:
+    '''
+    Linked List Structure.
+    '''
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 class Solution:
     '''Merge two sorted linked lists. '''
