@@ -58,8 +58,8 @@ int main()
 {
   test_simple_input();
 
-  long long t1 = time_elapsed(200);
-  long long t2 = time_elapsed(500);
+  long long t1 = time_elapsed(32000);
+  long long t2 = time_elapsed(64000);
 
   printf("%lf", t2*1.0/t1);
   return 0;
