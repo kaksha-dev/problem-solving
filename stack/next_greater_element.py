@@ -1,3 +1,6 @@
+'''
+https://leetcode.com/problems/next-greater-element-i/description/
+'''
 from collections import defaultdict
 
 def nextGreaterElement(nums1, nums2):
