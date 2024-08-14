@@ -34,7 +34,7 @@ class NumArray:
 
     
     def updateSegTree(self, left, right, index, val, pos):
-        if left == index:
+        if left>=right:
             self.segment_tree[pos] = val
             return
         
