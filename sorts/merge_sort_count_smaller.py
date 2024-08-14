@@ -23,6 +23,9 @@ def merge(nums, aux, left, mid, right):
             i += 1
         else:
             nums[k] = aux[j]
+            # Element at the right side of the array is smaller than current
+            # element at the current index at the left side. Every subsequent
+            # element nums[i ... mid] would be larger than nums[j]
             inversion_count_per_element += 1
             j += 1
 

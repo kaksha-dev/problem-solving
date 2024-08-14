@@ -10,6 +10,9 @@ def nextGreaterElement(nums1, nums2):
     monotonic_stack = []
     for x in nums2:
         while len(monotonic_stack) > 0 and monotonic_stack[-1] < x:
+            # x is larger than the element at the top of the stack.
+            # Pop and set x to be the next greater element for the 
+            # element just taken away from the stack.
             d[monotonic_stack.pop()] = x
         monotonic_stack.append(x)
     

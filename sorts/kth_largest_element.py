@@ -19,6 +19,9 @@ def quick_select(nums, k):
         elif num < pivot:
             right.append(num)
         else:
+            # Important to maintain a separate array of elements equal to the
+            # pivot. This ensures we are able to exit early if the kth largest
+            #  element is equal to the pivot element.
             mid.append(num)
             
     if k <= len(left):
@@ -31,7 +34,6 @@ def quick_select(nums, k):
 
 def findKthLargest(nums, k):
     return quick_select(nums, k)
-
 
 def testCases():
     assert findKthLargest([3, 2, 1, 5, 6, 4], 2) == 5
