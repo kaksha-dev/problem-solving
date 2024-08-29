@@ -8,7 +8,7 @@ class TowerOfHanoi:
     f(n) = 2*(2f(n-2) +1) + 1 => 2^^2*f(n-2) + 2^^2 - 1 => 2^^3*f(n-3) + 2^^3 -1
     f(n) = 2^^r*f(n-r) + 2^^r - 1
     we know the steps required when r=n-1 OR n = 1 => f(1) = 1
-    f(n) = 2^^(n-1)f(1) + 2^^(n-1) + 1 => 2*2^^(n-1) + 1 = 2^^n + 1
+    f(n) = 2^^(n-1)f(1) + 2^^(n-1) - 1 => 2*2^^(n-1) - 1 = 2^^n - 1
     """
 
     def __init__(self):
