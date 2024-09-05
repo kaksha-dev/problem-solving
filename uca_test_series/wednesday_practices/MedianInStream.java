@@ -47,6 +47,11 @@ public class MedianInStream {
     }
 
     public static void main(String[] args) {
+        /*
+         * There is stream of numbers coming continuously in random order. You have to store those numbers efficiently 
+         * and at any point of time somebody might ask what is the median of whatever data you have stored as of now. 
+         * Design data storage where insertion and calculation of median function is optimized. 
+         */
         MedianInStream ms = new MedianInStream();
         System.out.println(ms.getMedian()==0);
         ms.add(4);

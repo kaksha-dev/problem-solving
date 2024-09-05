@@ -22,6 +22,10 @@ public class ClinicVillage {
     }
 
     public static void main(String[] args) {
+        /*
+         *  There are n cities given along with respective population. You have to open m clinics in 
+         *  those cities such that maximum load on clinics are minimized. 
+         */
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
@@ -59,6 +63,7 @@ public class ClinicVillage {
 
         @Override
         public int compareTo(Node o) {
+            // this is make it max heap
             return (int) (o.getLoad() - this.getLoad());
         }
 
