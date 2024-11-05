@@ -24,29 +24,29 @@ Explanation: The smallest positive integer 1 is missing.
 class FirstMissingPositive {
     public static int firstMissingPositive(int[] a) {
 
-        for(int i = 0;i<a.length;i++){
-            if(a[i]<0) a[i] = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < 0) a[i] = 0;
         }
-        for(int i = 0;i<a.length;i++){
+        for (int i = 0; i < a.length; i++) {
             int index = Math.abs(a[i]);
-            if(index>a.length) continue;
-            if(index ==0) continue;
-            if(a[index-1] < 0) continue;
-            if(a[index-1] == 0) a[index-1] = index;
-            a[index-1] = -1 *  a[index-1];
+            if (index > a.length) continue; //don't care about higher than array length - missing number must be in the range of length
+            if (index == 0) continue; // interested in positive and non-zero numbers only
+            if (a[index - 1] < 0) continue;  //already occurred previously - ignore subsequent occurrences.
+            if (a[index - 1] == 0) a[index - 1] = index; // 0 can't be turned into negative hence a hack here. Can have better solution for this case
+            a[index - 1] = -1 * a[index - 1]; // multiply by -1 to mark its presence.
         }
-        for(int i = 0;i<a.length;i++){
-            if(a[i] >= 0) return i+1;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] >= 0) return i + 1; //found an index which is still positive - means not found in array
         }
-        return a.length+1;
+        return a.length + 1; //when all numbers till array length are found in array
 
     }
 
     public static void main(String[] args) {
         System.out.println(FirstMissingPositive.firstMissingPositive(new int[]{100000, 3, 4000, 2, 15, 1, 99999}));
-        System.out.println(FirstMissingPositive.firstMissingPositive(new int[]{1,2}));
+        System.out.println(FirstMissingPositive.firstMissingPositive(new int[]{1, 2}));
         System.out.println(FirstMissingPositive.firstMissingPositive(new int[]{1}));
-        System.out.println(FirstMissingPositive.firstMissingPositive(new int[]{1,0,2}));
-        System.out.println(FirstMissingPositive.firstMissingPositive(new int[]{3,4,1,-1}));
+        System.out.println(FirstMissingPositive.firstMissingPositive(new int[]{1, 0, 2}));
+        System.out.println(FirstMissingPositive.firstMissingPositive(new int[]{3, 4, 1, -1}));
     }
 }
