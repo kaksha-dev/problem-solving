@@ -21,5 +21,15 @@ public class TestAvl {
         avlTree.insert(2, "two");
         System.out.println(avlTree.height()==3);
 
+        AVLTreeSizeBased<Integer, String> avlTree2 = new AVLTreeSizeBased<>();
+        avlTree2.insert(8, "");
+        avlTree2.insert(7, "");
+        avlTree2.insert(6, "");
+        avlTree2.insert(5, "");
+        avlTree2.insert(4, "four");
+        avlTree2.insert(3, "i m three");
+        avlTree2.insert(2, "two");
+        System.out.println(avlTree2.height()==4);
+
     }
 }
