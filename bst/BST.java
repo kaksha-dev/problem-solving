@@ -1,7 +1,55 @@
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class BST<K extends Comparable<K>, V> {
     private Node root;
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node n) {
+        if (n == null) return 0;
+        return 1 + Math.max(height(n.left), height(n.right));
+    }
+
+    public void convertToDLink() {
+        if (root != null) {
+            List<Node> ends = convertToDLink(root);
+            if (ends.size() == 2) {
+                ends.get(0).left = ends.get(1);
+                ends.get(1).right = ends.get(0);
+                root = ends.get(0);
+            }
+        }
+    }
+
+    private List<Node> convertToDLink(Node n) {
+        List<Node> ends = new ArrayList<>(2);
+        if (n != null) {
+            List<Node> lEnds = convertToDLink(n.left);
+            List<Node> rEnds = convertToDLink(n.right);
+            if (lEnds.isEmpty()) {
+                ends.add(n);
+            } else {
+                ends.add(lEnds.get(0));
+                Node t = lEnds.get(lEnds.size() - 1);
+                t.right = n;
+                n.left = t;
+            }
+            if (rEnds.isEmpty()) {
+                if (!lEnds.isEmpty()) {
+                    ends.add(n);
+                }
+            } else {
+                rEnds.get(0).left = n;
+                n.right = rEnds.get(0);
+                Node t = rEnds.get(rEnds.size() - 1);
+                ends.add(t);
+            }
+        }
+        return ends;
+    }
 
     public K fca(K k1, K k2) {
         if (search(root, k1) == null || search(root, k2) == null) return null;
@@ -105,6 +153,26 @@ public class BST<K extends Comparable<K>, V> {
             return t;
         }
         return n;
+    }
+
+    public void printLinkedList() {
+        StringBuilder sb = new StringBuilder();
+        Node t = root;
+        do {
+            sb.append(t.k).append("(").append(t.v).append(")").append("->");
+            t = t.right;
+        } while (t.k != root.k);
+        sb.append(root.k).append("(").append(root.v).append(")");
+        System.out.println(sb);
+
+        sb = new StringBuilder();
+        t = root;
+        do {
+            sb.append(t.k).append("(").append(t.v).append(")").append("->");
+            t = t.left;
+        } while (t.k != root.k);
+        sb.append(root.k).append("(").append(root.v).append(")");
+        System.out.println(sb);
     }
 
     private class Node {

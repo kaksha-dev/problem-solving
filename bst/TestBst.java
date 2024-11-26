@@ -1,4 +1,3 @@
-
 public class TestBst {
 
     public static void main(String[] args) {
@@ -10,6 +9,7 @@ public class TestBst {
         b.insert(6, "");
         b.insert(7, "");
         b.insert(8, "");
+
         System.out.println(b.fca(3,5)==null);
         System.out.println(b.fca(3,4)==5);
         System.out.println(b.fca(2,4)==3);
@@ -24,5 +24,8 @@ public class TestBst {
         System.out.println(b.getMin()==2);
         b.delMin();
         System.out.println(b.search(2)==null);
+
+        b.convertToDLink();
+        b.printLinkedList();
     }
 }
