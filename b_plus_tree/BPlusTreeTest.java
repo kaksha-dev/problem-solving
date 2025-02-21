@@ -24,5 +24,6 @@ public class BPlusTreeTest {
         assert t.search(19) == null;
         t.insert(15, "New15");
         assert t.search(15).equalsIgnoreCase("New15");
+        t.levelOrder();
     }
 }
