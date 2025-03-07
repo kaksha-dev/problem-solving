@@ -23,6 +23,10 @@ public class WeightedEdge implements Comparable<WeightedEdge> {
         return v2;
     }
 
+    public int getOther(int v) {
+        return v1 == v ? v2 : v1;
+    }
+
     public Double getW() {
         return w;
     }
