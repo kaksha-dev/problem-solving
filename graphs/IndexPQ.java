@@ -15,6 +15,7 @@ public class IndexPQ<K extends Comparable<K>> {
     }
 
     public void insert(int v, K key) {
+        //System.out.println("inserting "+v+"("+key+")");
         pq[n] = v;
         qp[v] = n;
         keys[v] = key;
@@ -25,7 +26,7 @@ public class IndexPQ<K extends Comparable<K>> {
     private void swim(int i) {
         if (i == 0) return;
         int p = i / 2;
-        if (keys[pq[p]].compareTo(keys[pq[i]]) > 0) {
+        if (getKeyAtIndex(p).compareTo(getKeyAtIndex(i)) > 0) {
             swap(i, p);
             swim(p);
         }
@@ -37,8 +38,9 @@ public class IndexPQ<K extends Comparable<K>> {
         swap(0, n - 1);
         n--;
         sink(0);
-        keys[pq[n]] = null;
-        qp[pq[n]] = -1;
+        keys[getVertexOfIndex(n)] = null;
+        qp[getVertexOfIndex(n)] = -1;
+        //System.out.println("Delete min returns "+v);
         return v;
     }
 
@@ -46,8 +48,8 @@ public class IndexPQ<K extends Comparable<K>> {
         int t = pq[i];
         pq[i] = pq[j];
         pq[j] = t;
-        qp[pq[i]] = i;
-        qp[pq[j]] = j;
+        qp[getVertexOfIndex(i)] = i;
+        qp[getVertexOfIndex(j)] = j;
     }
 
     private void sink(int i) {
@@ -55,8 +57,8 @@ public class IndexPQ<K extends Comparable<K>> {
         int l = i * 2;
         int r = i * 2 + 1;
         int min = i;
-        if (l < n && keys[pq[l]].compareTo(keys[pq[min]]) < 0) min = l;
-        if (r < n && keys[pq[r]].compareTo(keys[pq[min]]) < 0) min = r;
+        if (l < n && getKeyAtIndex(l).compareTo(getKeyAtIndex(min)) < 0) min = l;
+        if (r < n && getKeyAtIndex(r).compareTo(getKeyAtIndex(min)) < 0) min = r;
         if (min != i) {
             swap(i, min);
             sink(min);
@@ -64,13 +66,14 @@ public class IndexPQ<K extends Comparable<K>> {
     }
 
     public void decreaseKey(int v, K key) {
+        //System.out.println("decrease key "+v+"("+key+")");
         int cmp = keys[v].compareTo(key);
         keys[v] = key;
         if (cmp == 0) return;
         if (cmp > 0)
-            swim(qp[v]);
+            swim(getIndexOfVertex(v));
         else
-            sink(qp[v]);
+            sink(getIndexOfVertex(v));
     }
 
     public boolean hasKey(int v) {
@@ -85,13 +88,29 @@ public class IndexPQ<K extends Comparable<K>> {
         return n;
     }
 
+    private int getIndexOfVertex(int v) {
+        return qp[v];
+    }
+
+    private int getVertexOfIndex(int index) {
+        return pq[index];
+    }
+
+    private K getKeyAtIndex(int index) {
+        return getKeyOfVertex(getVertexOfIndex(index));
+    }
+
+    private K getKeyOfVertex(int vertex) {
+        return keys[vertex];
+    }
+
     @Override
     public String toString() {
         return "IndexPQ{" +
                 "keys=" + Arrays.toString(keys) +
                 ", pq=" + Arrays.toString(pq) +
                 ", qp=" + Arrays.toString(qp) +
-                ", n=" + n +
+                ", size=" + n +
                 '}';
     }
 }

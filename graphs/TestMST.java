@@ -17,30 +17,34 @@ public class TestMST {
         g.addEdge(7, 8, 7);
         g.addEdge(2, 8, 2);
 
+        double sum = 0;
         /* 
         Kruskal kruskal = new Kruskal(g);
-        double sum = 0;
+       
         for (WeightedEdge e : kruskal.getMst()) {
             sum += e.getW();
         }
         System.out.println(kruskal.getMst());
-        System.out.println("cost of prims mst " + sum);
+        System.out.println("cost of kruskal mst " + sum);
+        assert sum==37;
         */
+
         Prims prims = new Prims(g);
         System.out.println(prims.getMst());
-        double sum = 0;
+        sum = 0;
         for (WeightedEdge e : prims.getMst()) {
             sum += e.getW();
         }
         System.out.println("cost of prims mst " + sum);
-
+        assert sum==37;
         PrimsFast prims2 = new PrimsFast(g);
         System.out.println(prims2.getMst());
         sum = 0;
         for (WeightedEdge e : prims2.getMst()) {
             sum += e == null ? 0 : e.getW();
         }
-        System.out.println("cost of prims mst " + sum);
+        System.out.println("cost of prims fast mst " + sum);
+        assert sum==37;
     }
 
 }
