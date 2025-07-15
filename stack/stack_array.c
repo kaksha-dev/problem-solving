@@ -24,20 +24,18 @@ void resize_array(int new_capacity)
 
 void push(int item)
 {
-  if(N < max_size) {
-    if(N == 0) max_size = 1;
-    else max_size = 2*N;
+  if(N >= max_size-1) {
+    max_size *= 2;
     resize_array(max_size);
   }
-  max_size = 2*N;
   array[N++] = item;
 }
 
 int pop()
 {
   int item = array[--N];
-  if (N <= max_size/4) resize_array(N/2);
-  max_size = N/2;
+  if (N <= max_size/4) resize_array(max_size/2);
+  max_size = max_size/2;
 
   return item;
 }
