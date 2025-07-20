@@ -4,8 +4,6 @@
 #include <assert.h>
 #include "stack.h"
 
-#define INITIAL_CAPACITY 1
-
 int* array;
 int N = 0;
 int max_size = 1;
@@ -24,18 +22,20 @@ void resize_array(int new_capacity)
 
 void push(int item)
 {
-  if(N >= max_size-1) {
+  array[N++] = item;
+  if(N >= max_size) {
     max_size *= 2;
     resize_array(max_size);
   }
-  array[N++] = item;
 }
 
 int pop()
 {
   int item = array[--N];
-  if (N <= max_size/4) resize_array(max_size/2);
-  max_size = max_size/2;
+  if (N <= max_size/4) {
+    max_size = max_size/2;
+    resize_array(max_size);
+  }
 
   return item;
 }
@@ -74,6 +74,7 @@ void testStack()
 
 int main()
 {
+  array = (int *) malloc(sizeof(int)*max_size);
   testStack();
   return 0;
 }
