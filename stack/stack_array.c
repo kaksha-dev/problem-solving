@@ -1,15 +1,18 @@
+/**
+ * Stack implementation with a resizing array.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <assert.h>
 #include "stack.h"
 
-#define INITIAL_CAPACITY 1
-
 int* array;
 int N = 0;
 int max_size = 1;
 
+// resize the underlying array holding the elements
 void resize_array(int new_capacity)
 {
   int * new_array = (int *) malloc(sizeof(int)*new_capacity);
@@ -21,37 +24,54 @@ void resize_array(int new_capacity)
   array = new_array;
 }
 
-
+/**
+ * Pushes a new item to the stack.
+ * 
+ * @param item - item to be pushed into stack
+ */
 void push(int item)
 {
-  if(N < max_size) {
-    if(N == 0) max_size = 1;
-    else max_size = 2*N;
+  array[N++] = item;
+  if(N >= max_size) {
+    max_size *= 2;
     resize_array(max_size);
   }
-  max_size = 2*N;
-  array[N++] = item;
 }
 
+/**
+ * Removes and returns the item most recently added to this stack.
+ * @return the item most recently added
+ */
 int pop()
 {
   int item = array[--N];
-  if (N <= max_size/4) resize_array(N/2);
-  max_size = N/2;
+  if (N <= max_size/4) {
+    max_size = max_size/2;
+    resize_array(max_size);
+  }
 
   return item;
 }
 
+/**
+ * Is this stack empty?
+ * @return true if this stack is empty; false otherwise
+*/
 bool isEmpty()
 {
   return N == 0;
 }
 
+/**
+ * Returns the number of items in the stack.
+ * @return the number of items in the stack
+*/
 int size()
 {
   return N;
 }
 
+// Tests Stack data structure.
 void testStack()
 {
   push(3);
@@ -76,6 +96,7 @@ void testStack()
 
 int main()
 {
+  array = (int *) malloc(sizeof(int)*max_size);
   testStack();
   return 0;
 }
