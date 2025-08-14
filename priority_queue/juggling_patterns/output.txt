@@ -1,0 +1,6 @@
+3: valid with 3 balls
+33333: valid with 3 balls
+345: valid with 4 balls
+542: invalid # of balls
+543: invalid pattern
+55550: valid with 4 balls 
