@@ -1,5 +1,7 @@
 package priorityqueue.generic;
 
+import java.util.Comparator;
+
 /**
  * The MaxPriority Queue class represents a priority
  * queue for integer data types. It supports
@@ -12,6 +14,7 @@ package priorityqueue.generic;
 public class MaxPriorityQueue<T> {
   private T[] pq; // binary heap using 1-based indexing
   private int size;    // number of elements in the queue
+  private Comparator<T> comparator;
 
   /**
    * Initializes an empty priority queue.
@@ -21,6 +24,13 @@ public class MaxPriorityQueue<T> {
   public MaxPriorityQueue(int capacity) {
     this.pq = (T []) new Object[capacity + 1];
     this.size = 0;
+    this.comparator = null;
+  }
+
+  public MaxPriorityQueue(int capacity, Comparator<T> comparator) {
+    this.pq = (T []) new Object[capacity + 1];
+    this.size = 0;
+    this.comparator = comparator;
   }
 
   /**
@@ -51,6 +61,7 @@ public class MaxPriorityQueue<T> {
   
   // Helper function.
   private boolean less(int i, int j) {
+    if (comparator != null) return comparator.compare(this.pq[i], this.pq[j]) < 0;
     return ((Comparable<T>) this.pq[i]).compareTo(((T) this.pq[j])) < 0;
   }
 

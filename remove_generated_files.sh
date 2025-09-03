@@ -9,3 +9,4 @@ do
     echo "Removing $file"
     rm -f "$file"
 done
+
