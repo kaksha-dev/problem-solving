@@ -24,8 +24,7 @@ public class MaxPriorityQueue {
   /**
    * Returns true if this priority queue is empty.
    *
-   * @return true if priority queue is empty;
-            false otherwise
+   * @return true if priority queue is empty; false otherwise
    */
   public boolean isEmpty() {
     return this.size == 0;

@@ -27,6 +27,9 @@ public class MaxPriorityQueue<T> {
     this.comparator = null;
   }
 
+  /**
+   * Initializes an empty priority queue with a comparator.
+   */
   public MaxPriorityQueue(int capacity, Comparator<T> comparator) {
     this.pq = (T []) new Object[capacity + 1];
     this.size = 0;
@@ -61,7 +64,9 @@ public class MaxPriorityQueue<T> {
   
   // Helper function.
   private boolean less(int i, int j) {
-    if (comparator != null) return comparator.compare(this.pq[i], this.pq[j]) < 0;
+    if (comparator != null) {
+      return comparator.compare(this.pq[i], this.pq[j]) < 0;
+    }
     return ((Comparable<T>) this.pq[i]).compareTo(((T) this.pq[j])) < 0;
   }
 
